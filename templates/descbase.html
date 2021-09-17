@@ -1,0 +1,220 @@
+{% load static %}
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orion 2.0 - Treasure Hunt</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico'%}"/>
+    <style>
+        .leaderboard{
+            margin: 0 auto;
+            border-radius: 5px;
+            padding: 30px;
+            width: 80%;
+            background-color: white;
+        }
+
+    </style>
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/popper.min.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+</head>
+<body style="overflow-x:hidden;">
+    <!-- class = "container-contact100" -->
+    {% if user.is_authenticated %}
+    <div class="container-fluid">
+        <nav style=" position: absolute; top:0;right:0;width:100%; z-index:9999;background-color: #0e0e0e !important;" class="navbar navbar-expand-lg navbar-dark ">
+    
+            <a class="navbar-brand" href="">Hi, {{user.first_name}}</a>
+    
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+    
+             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    
+                 <ul class="navbar-nav ml-auto">
+                     <li class="nav-item">
+                         <b><a class="nav-link" href="/dashboard/guidelines">Dashboard</a></b>
+                     </li>
+                     <li class="nav-item">
+                      <b><a class="nav-link" href="/clues/clues">Clues</a></b>
+                      </li>
+                      <li class="nav-item">
+                        <b><a class="nav-link" href="/desc/q1">Descriptive</a></b>
+                        </li>
+                     <li class="nav-item">
+                        <b><a class="nav-link" href="/leaderboard/leaderboard">Leaderboards</a></b>
+                    </li>
+                     <li class="nav-item">
+                        <b><a class="nav-link" href="/accounts/editprofile">User Profile</a></b>
+                    </li>
+                     <li class="nav-item">
+                         <b><a class="nav-link" href="/accounts/logout">Logout</a></b>
+                     </li>
+                 </ul>
+    
+             </div>
+         </nav>
+        </div>
+    </div>
+    <div class="container-contact100">
+    <div class="leaderboard" style="color:seashell; text-align:center;margin-top: 100px;" >
+        <h1 class="contact100-form-title">Problem Statements</h1>
+        {% if show %}
+        <div class="row" style="color:rgb(29, 29, 28); width:80%; margin: 0 auto;">
+            <div style="margin: 40px auto; width: 80%; display: flex; justify-content: space-around; align-items: center;">
+                <div>
+                    <a href="/desc/q1" class="desc-question-link {% if q1 %} desc-question-active {% endif %}" style="">Question 1</a>
+                </div>
+                <div>
+                    <a href="/desc/q2" class="desc-question-link  {% if q2 %} desc-question-active {% endif %}">Question 2</a>
+                </div>
+            </div>
+            {%if q1%}
+                <h3 style="width: 100%; font-weight: 600; margin: 30px 0">{{q.q_heading}}</h3>
+                <p style="text-align: left; font-size: 16px;">{{q.question}}</p>
+                {% for message in messages%}
+                <p
+                  style="
+                    color: rgb(3, 70, 3);
+                    background-color: rgb(142, 247, 142);
+                    padding: 8px 15px;
+                    border-radius: 2px;
+                    margin: 0px 18px 0px 18px;
+                  "
+                >
+                  {{message}}
+                </p>
+                {% endfor %}
+                <form style="margin: 0 auto; width: 96%" action="/desc/q1" method="POST">
+                  {% csrf_token %}
+                    <textarea class="input100" placeholder="Enter your answer here..." name="q1-ans" id="q1-ans" cols="30" rows="10">{% if usrprog.descq1 %} {{usrprog.descq1}} {% endif %}</textarea>
+                    <div class="container-contact100-form-btn" style="margin-bottom: 40px;">
+                        <div class="wrap-contact100-form-btn">
+                          <div class="contact100-form-bgbtn"></div>
+                          <button type="submit" class="contact100-form-btn">
+                            <span>
+                              SUBMIT ANSWER
+                              <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                </form>
+            {%endif%}
+            {%if q2%}
+            <h3 style="width: 100%; font-weight: 600; margin: 30px 0">{{q.q_heading}}</h3>
+            <p style="text-align: left; font-size: 16px;">{{q.question}}</p>
+            {% for message in messages%}
+            <p
+              style="
+                color: rgb(3, 70, 3);
+                background-color: rgb(142, 247, 142);
+                padding: 8px 15px;
+                border-radius: 2px;
+                margin: 0px 18px 0px 18px;
+              "
+            >
+              {{message}}
+            </p>
+            {% endfor %}
+            <form style="margin: 0 auto; width: 96%" action="/desc/q2" method="POST">
+              {% csrf_token %}
+                <textarea class="input100" placeholder="Enter your answer here..." name="q2-ans" id="q2-ans" cols="30" rows="10">{% if usrprog.descq2 %} {{usrprog.descq2}} {% endif %}</textarea>
+                <div class="container-contact100-form-btn" style="margin-bottom: 40px;">
+                    <div class="wrap-contact100-form-btn">
+                      <div class="contact100-form-bgbtn"></div>
+                      <button type="submit" class="contact100-form-btn">
+                        <span>
+                          SUBMIT ANSWER
+                          <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+            </form>
+            {%endif%}
+        </div>
+    </div>
+</div>
+    {% else %}
+
+    <span class="contact100-form-subtitle" style="padding-bottom: 10px;">Hunting has not yet started!</span>
+
+<div class="count">
+	<div class="countd">
+	  <span id="days"><b>00</b></span>
+	  <b>DAYS</b> 
+	</div>
+
+	<div class="countd">
+	  <span id="hours"><b>00</b></span>
+	  <b>HOURS</b>  
+	</div>
+
+	<div class="countd">
+	  <span id="minutes"><b>00</b></span>
+	  <b>MINUTES</b> 
+	</div>
+
+	<div class="countd">
+	  <span id="seconds"><b>00</b></span>
+	  <b>SECONDS</b> 
+	</div>
+  </div>
+
+
+<a href="/accounts/editprofile" style="color:#0e0e0e; font-size: 17px; display:block;text-align: center;">How about updating your user profile?</a>
+
+
+
+
+<script type="text/javascript">
+
+var count = new Date("{{chkdate}}").getTime();
+var now = new Date().getTime();
+var d = count - now;
+if(d>0){
+
+var x = setInterval(function() {
+var now = new Date().getTime();
+var d = count - now;
+
+var days = Math.floor(d/(1000*60*60*24));
+var hours = Math.floor((d%(1000*60*60*24))/(1000*60*60));
+var minutes = Math.floor((d%(1000*60*60))/(1000*60));
+var seconds = Math.floor((d%(1000*60))/1000);
+
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
+
+if(d <= 0){
+  clearInterval(x);
+  location.reload();
+}
+},1000);}
+
+
+</script>
+
+{% endif %}
+
+
+    {% else %}
+    <div class="container-contact100" style="background-image: url({% static 'images/orion-bg.jpg' %})">
+		<div class="wrap-contact100">
+            <span class="contact100-form-subtitle">You are not logged in!</span>
+            <a href="/" style="color:#17213f; font-size: 20px; display:block;text-align: center;"> Go to Login!</a>
+		</div>
+    </div>
+{% endif %}
+</body>
+</html>

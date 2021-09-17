@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="contact100-form validate-form">
+  {% csrf_token %}
+  <span class="contact100-form-title">
+    <img
+      class="orion-logo"
+      src="{% static 'images/stem-ed-logo.png' %}"
+      alt="stem-ed-logo"
+    />
+    GUIDELINES
+  </span>
+  <span class="contact100-form-subtitle">Read the guidelines!</span>
+
+  <p style="margin-bottom: 10px">
+    • Use the same chest number and password for signing in.<br /><br />
+    • Answers must be in small letters without spaces and special characters.<br /><br />
+    • Don't share answers with other teams.<br /><br />
+    • If a team undergoes any malpractices will be disqualified.<br /><br />
+    • Points will be awarded based on the number questions solved.<br /><br />
+    • In case of a tie, the team used least time will be considered for
+    evaluation.<br /><br />
+    • In case of any doubts please contact the coordinators.<br /><br />
+  </p>
+
+  <div class="container-contact100-form-btn">
+    <div class="wrap-contact100-form-btn">
+      <div class="contact100-form-bgbtn"></div>
+      <a href="/clues/clues">
+        <button class="contact100-form-btn">
+          <span>
+            CONTINUE
+            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+          </span>
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      #logo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 10px;
+        width: 10px;
+      }
+    </style>
+    <title>Orion 2.0 - Treasure Hunt</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link
+      rel="icon"
+      type="image/png"
+      href="{% static 'images/icons/favicon.ico'%}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'vendor/animate/animate.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'vendor/animsition/css/animsition.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'vendor/select2/select2.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'vendor/daterangepicker/daterangepicker.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/popper.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+    <div class="container-fluid">
+      <nav
+        style="
+          position: absolute;
+          right: 0;
+          width: 100%;
+          z-index: 9999;
+          background-color: #0e0e0e !important;
+        "
+        class="navbar navbar-expand-lg navbar-dark"
+      >
+        <a class="navbar-brand" href="">Hi, {{user.first_name}}</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarTogglerDemo02"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <b
+                ><a class="nav-link" href="/dashboard/guidelines"
+                  >Dashboard</a
+                ></b
+              >
+            </li>
+            <li class="nav-item">
+              <b><a class="nav-link" href="/clues/clues">Clues</a></b>
+              </li>
+              <li class="nav-item">
+                <b><a class="nav-link" href="/desc/q1">Descriptive</a></b>
+                </li>
+            <li class="nav-item">
+              <b
+                ><a class="nav-link" href="/leaderboard/leaderboard"
+                  >Leaderboards</a
+                ></b
+              >
+            </li>
+            <li class="nav-item">
+              <b
+                ><a class="nav-link" href="/accounts/editprofile"
+                  >User Profile</a
+                ></b
+              >
+            </li>
+            <li class="nav-item">
+              <b><a class="nav-link" href="/accounts/logout">Logout</a></b>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    {% endif %}
+    <div class="container-contact100">
+      <div
+        class="wrap-contact100"
+        style="margin-top: 70px; margin-bottom: 70px"
+      >
+        {% block content %} {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+web: gunicorn orion2_treasurehunt.wsgi

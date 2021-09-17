@@ -1,0 +1,139 @@
+{% extends 'base.html' %} {% load static %} {% block content %} 
+{% if user.is_authenticated %}
+
+<form class="contact100-form validate-form" action="editprofile" method="post">
+  {% csrf_token %}
+  <span class="contact100-form-subtitle">Treasure Hunt</span>
+  <span class="contact100-form-title">
+    <img
+      class="orion-logo"
+      src="{% static 'images/stem-ed-logo.png' %}"
+      alt="stem-ed-logo"
+    />
+    Edit User/Team Profile
+  </span>
+  <div>
+    {% for message in messages%}
+    <p
+      style="
+        color: rgb(3, 70, 3);
+        background-color: rgb(142, 247, 142);
+        padding: 8px 15px;
+        border-radius: 2px;
+        margin: 5px 0px 18px 0px;
+      "
+    >
+      {{message}}
+    </p>
+    {% endfor %}
+  </div>
+  <div class="wrap-input100 validate-input" data-validate="Name is required">
+    <span class="label-input100">User Contact</span>
+    <input
+      class="input100"
+      type="text"
+      name="user_contact"
+      placeholder="Contact Number"
+      value="{{prof.user_contact}}"
+    />
+    <span class="focus-input100"></span>
+  </div>
+  <div class="wrap-input100 validate-input" data-validate="Name is required">
+    <span class="label-input100">Teammate 1</span>
+    <input
+      class="input100"
+      type="text"
+      name="teammate_name1"
+      placeholder="Teammate 1"
+      value="{{prof.teammate_name1}}"
+    />
+    <span class="focus-input100"></span>
+  </div>
+
+  <div class="wrap-input100 validate-input" data-validate="Name is required">
+    <span class="label-input100">Teammate 2</span>
+    <input
+      class="input100"
+      type="text"
+      name="teammate_name2"
+      placeholder="Teammate 2"
+      value="{{prof.teammate_name2}}"
+    />
+    <span class="focus-input100"></span>
+  </div>
+
+  <div class="wrap-input100 validate-input" data-validate="Name is required">
+    <span class="label-input100">Teammate 3</span>
+    <input
+      class="input100"
+      type="text"
+      name="teammate_name3"
+      placeholder="Teammate 3"
+      value="{{prof.teammate_name3}}"
+    />
+    <span class="focus-input100"></span>
+  </div>
+
+  <div class="wrap-input100 validate-input" data-validate="Name is required">
+    <span class="label-input100">Teammate 4</span>
+    <input
+      class="input100"
+      type="text"
+      name="teammate_name4"
+      placeholder="Teammate 4"
+      value="{{prof.teammate_name4}}"
+    />
+    <span class="focus-input100"></span>
+  </div>
+
+  <div class="wrap-input100 validate-input" data-validate="Name is required">
+    <span class="label-input100">Teammate 5</span>
+    <input
+      class="input100"
+      type="text"
+      name="teammate_name5"
+      placeholder="Teammate 5"
+      value="{{prof.teammate_name5}}"
+    />
+    <span class="focus-input100"></span>
+  </div>
+
+  <div class="container-contact100-form-btn">
+    <div class="wrap-contact100-form-btn">
+      <div class="contact100-form-bgbtn"></div>
+      <button type="submit" class="contact100-form-btn">
+        <span>
+          SAVE
+          <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <b
+    ><a
+      href="/dashboard/guidelines"
+      style="
+        display: block;
+        text-align: center;
+        margin: 20px auto 0 auto;
+        color: #17213f;
+        font-size: 18px;
+      "
+    >
+      Back to Dashboard</a
+    ></b
+  >
+</form>
+
+{% else %}
+
+<span class="contact100-form-subtitle">You are not logged in!</span>
+<a
+  href="/"
+  style="color: #17213f; font-size: 20px; display: block; text-align: center"
+>
+  Go to Login!</a
+>
+
+{% endif %} {% endblock %}
