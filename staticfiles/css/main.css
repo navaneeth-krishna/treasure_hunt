@@ -90,13 +90,15 @@ input {
 }
 
 textarea {
+  font-size: 16px;
+  font-weight: 400;
   outline: none;
-  border: none;
+  border: 1px solid rgb(204, 204, 204);
+  margin: 30px 0;
+  width: 100%;
+  border-radius: 5px;
 }
 
-textarea:focus, input:focus {
-  border-color: transparent !important;
-}
 
 input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; }
@@ -135,10 +137,34 @@ iframe {
 
 
 /*---------------------------------------------*/
+.desc-question-link{
+  font-weight: 400; 
+  font-size: 16px;
+  color: #4d4d4d;
+  border: 1px solid #a8a8a8;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  padding: 10px 24px;
+}
+
+@media screen and (max-width: 600px) {
+  .desc-question-link{
+    margin: 0 20px;
+    flex-wrap: wrap;
+  }
+}
+
+.desc-question-active{
+  font-weight: 600; 
+  color: #1453b1;
+  border: 1px solid #4b79bc;
+  background-color: #dde8f8;
+}
+
+
 .container {
     max-width: 1200px;
 }
-
 
 
 .count{
@@ -194,7 +220,7 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
   padding: 15px;
   background: #3c487a;
-  background-image: url("../images/orion-bg.jpg");
+  background-image: url("../images/stem-ed-bg.jpg");
   background-size: cover;
   background-position: bottom;
 
@@ -370,7 +396,7 @@ textarea.input100 {
   z-index: -1;
   width: 300%;
   height: 100%;
-  background: #0e0e0e;
+  background: linear-gradient(to right, #4b79bc, #49bed9);
   top: 0;
   left: -100%;
 
