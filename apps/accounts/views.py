@@ -46,11 +46,17 @@ def register(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
 
-        if password1 != password2 or User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists():
+        if password1 != password2 or User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists() or username=="" or email=="" or password1=="" or password2=="":
             if User.objects.filter(username=username).exists():
                 messages.info(request, "Username Already Taken")
             elif User.objects.filter(email=email).exists():
                 messages.info(request, "Email Already Taken")
+            elif username == "":
+                messages.info(request, "Chest Number cannot be empty")
+            elif email == "":
+                messages.info(request, "Email cannot be empty")
+            elif password1 == "" or password2=="":
+                messages.info(request, "Password cannot be empty")
             else:
                 messages.info(request, "Passwords not Matching")
             return redirect('register')
