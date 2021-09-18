@@ -17,7 +17,6 @@
             width: 80%;
             background-color: white;
         }
-
     </style>
     <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
 	<script src="{% static 'vendor/bootstrap/js/popper.min.js' %}"></script>
@@ -70,7 +69,7 @@
         {% if show %}
         <div class="row" style="color:rgb(29, 29, 28); width:80%; margin: 0 auto;">
             <div class="col" style="border-bottom:rgb(53, 53, 53) solid 2px; margin-bottom: 10px;padding-bottom: 5px"><b>Points</b></div>
-            <div class="col" style="border-bottom:rgb(53, 53, 53) solid 2px; margin-bottom: 10px; padding-bottom: 5px"><b>Team Name</b></div>
+            <div class="col" style="border-bottom:rgb(53, 53, 53) solid 2px; margin-bottom: 10px; padding-bottom: 5px"><b>Chest Number</b></div>
             {% for lead in leads %}
             <div class="w-100"></div>
             <div class="col" style="margin-bottom: 10px; padding-bottom: 5px">{{lead.clueReached|sub:1|mul:10}}</div>

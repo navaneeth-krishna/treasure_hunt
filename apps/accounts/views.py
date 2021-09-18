@@ -40,7 +40,7 @@ def register(request):
 
     if(request.method == 'POST'):
         first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
+        # last_name = request.POST['last_name']
         email = request.POST['email']
         username = request.POST['username']
         password1 = request.POST['password1']
@@ -56,7 +56,7 @@ def register(request):
             return redirect('register')
         else:
             user = User.objects.create_user(
-                username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
+                username=username, password=password1, email=email, first_name=first_name) #, last_name=last_name)
             user.save()
 
         return redirect('/')

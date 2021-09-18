@@ -18,6 +18,36 @@
             background-color: white;
         }
 
+        .row-padding{
+          color:rgb(29, 29, 28); 
+          width:80%; 
+          margin: 0 auto;
+        }
+
+        .question-switch-wrap{
+          margin: 40px auto; 
+          width: 80%; 
+          display: flex; 
+          justify-content: space-around; 
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        @media screen and (max-width: 600px){
+          .leaderboard{
+            width: 100% !important;
+          }
+
+          .row-padding{
+            width: 100%;
+          }
+
+          .question-switch-wrap{
+            min-height: 150px;
+          }
+
+        }
+
     </style>
     <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
 	<script src="{% static 'vendor/bootstrap/js/popper.min.js' %}"></script>
@@ -67,9 +97,9 @@
     <div class="leaderboard" style="color:seashell; text-align:center;margin-top: 100px;" >
         <h1 class="contact100-form-title">Problem Statements</h1>
         {% if show %}
-        <div class="row" style="color:rgb(29, 29, 28); width:80%; margin: 0 auto;">
-            <div style="margin: 40px auto; width: 80%; display: flex; justify-content: space-around; align-items: center;">
-                <div>
+        <div class="row row-padding">
+            <div class="question-switch-wrap">
+                <div class="link-wrap-mob">
                     <a href="/desc/q1" class="desc-question-link {% if q1 %} desc-question-active {% endif %}" style="">Question 1</a>
                 </div>
                 <div>
@@ -94,7 +124,7 @@
                 {% endfor %}
                 <form style="margin: 0 auto; width: 96%" action="/desc/q1" method="POST">
                   {% csrf_token %}
-                    <textarea class="input100" placeholder="Enter your answer here..." name="q1-ans" id="q1-ans" cols="30" rows="10">{% if usrprog.descq1 %} {{usrprog.descq1}} {% endif %}</textarea>
+                    <textarea class="input100" style="font-size: 14px; font-weight: normal;" placeholder="Enter your answer here..." name="q1-ans" id="q1-ans" cols="30" rows="10">{% if usrprog.descq1 %} {{usrprog.descq1}} {% endif %}</textarea>
                     <div class="container-contact100-form-btn" style="margin-bottom: 40px;">
                         <div class="wrap-contact100-form-btn">
                           <div class="contact100-form-bgbtn"></div>
@@ -126,7 +156,7 @@
             {% endfor %}
             <form style="margin: 0 auto; width: 96%" action="/desc/q2" method="POST">
               {% csrf_token %}
-                <textarea class="input100" placeholder="Enter your answer here..." name="q2-ans" id="q2-ans" cols="30" rows="10">{% if usrprog.descq2 %} {{usrprog.descq2}} {% endif %}</textarea>
+                <textarea class="input100" style="font-size: 14px; font-weight: normal;" placeholder="Enter your answer here..." name="q2-ans" id="q2-ans" cols="30" rows="10">{% if usrprog.descq2 %} {{usrprog.descq2}} {% endif %}</textarea>
                 <div class="container-contact100-form-btn" style="margin-bottom: 40px;">
                     <div class="wrap-contact100-form-btn">
                       <div class="contact100-form-bgbtn"></div>

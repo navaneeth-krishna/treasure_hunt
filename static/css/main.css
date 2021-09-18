@@ -147,6 +147,13 @@ iframe {
   padding: 10px 24px;
 }
 
+@media screen and (max-width: 600px) {
+  .desc-question-link{
+    margin: 0 20px;
+    flex-wrap: wrap;
+  }
+}
+
 .desc-question-active{
   font-weight: 600; 
   color: #1453b1;

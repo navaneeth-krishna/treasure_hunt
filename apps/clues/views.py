@@ -41,7 +41,7 @@ def clues(request):
     print(now)
     print(check_date)
 
-    if(user.userprogress.clueReached < 6):
+    if(user.userprogress.clueReached < 16):
         clue = Clue.objects.get(clue_no=user.userprogress.clueReached)
         return render(request, 'phase2.html', {'clue': clue, 'show': show_dash, 'deadline': deadline, 'chkdate': str_check_date})
 
@@ -80,9 +80,9 @@ def check(request):
 
 # Checking if the user has won---------------------
 
-        if(user.userprogress.clueReached == 6):
+        if(user.userprogress.clueReached == 16):
             user_won = WonUser(position=no_user, time_won=timezone.now(), first_name=user.first_name, last_name=user.last_name, username=user.username, email=user.email, clue1Reached=user.userprogress.clue1Reached, clue2Reached=user.userprogress.clue2Reached, clue3Reached=user.userprogress.clue3Reached, clue4Reached=user.userprogress.clue4Reached, clue5Reached=user.userprogress.clue5Reached, clue6Reached=user.userprogress.clue6Reached, clue7Reached=user.userprogress.clue7Reached, clue8Reached=user.userprogress.clue8Reached,
-                               clue9Reached=user.userprogress.clue9Reached, clue10Reached=user.userprogress.clue10Reached, clue11Reached=user.userprogress.clue11Reached)
+                               clue9Reached=user.userprogress.clue9Reached, clue10Reached=user.userprogress.clue10Reached, clue11Reached=user.userprogress.clue11Reached, clue12Reached=user.userprogress.clue12Reached, clue13Reached=user.userprogress.clue13Reached, clue14Reached=user.userprogress.clue14Reached, clue15Reached=user.userprogress.clue15Reached, clue16Reached=user.userprogress.clue16Reached)
             if(not(WonUser.objects.filter(username=user_won.username).exists())):
                 user_won.save()
             won = WonUser.objects.get(username=user.username)
@@ -95,9 +95,9 @@ def check(request):
                 user.userprogress.updateclue()
 
 # Checking if user has already won---------------------
-                if(user.userprogress.clueReached == 6):
+                if(user.userprogress.clueReached == 16):
                     user_won = WonUser(position=no_user, time_won=timezone.now(), first_name=user.first_name, last_name=user.last_name, username=user.username, email=user.email, clue1Reached=user.userprogress.clue1Reached, clue2Reached=user.userprogress.clue2Reached, clue3Reached=user.userprogress.clue3Reached, clue4Reached=user.userprogress.clue4Reached, clue5Reached=user.userprogress.clue5Reached, clue6Reached=user.userprogress.clue6Reached, clue7Reached=user.userprogress.clue7Reached, clue8Reached=user.userprogress.clue8Reached,
-                                       clue9Reached=user.userprogress.clue9Reached, clue10Reached=user.userprogress.clue10Reached, clue11Reached=user.userprogress.clue11Reached)
+                                       clue9Reached=user.userprogress.clue9Reached, clue10Reached=user.userprogress.clue10Reached, clue11Reached=user.userprogress.clue11Reached, clue12Reached=user.userprogress.clue12Reached, clue13Reached=user.userprogress.clue13Reached, clue14Reached=user.userprogress.clue14Reached, clue15Reached=user.userprogress.clue15Reached, clue16Reached=user.userprogress.clue16Reached)
                     if(not(WonUser.objects.filter(username=user_won.username).exists())):
                         user_won.save()
                     won = WonUser.objects.get(username=user.username)

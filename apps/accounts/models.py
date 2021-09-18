@@ -58,6 +58,11 @@ class UserProgress(models.Model):
     clue9Reached = models.DateTimeField(null=True, blank=True)
     clue10Reached = models.DateTimeField(null=True, blank=True)
     clue11Reached = models.DateTimeField(null=True, blank=True)
+    clue12Reached = models.DateTimeField(null=True, blank=True)
+    clue13Reached = models.DateTimeField(null=True, blank=True)
+    clue14Reached = models.DateTimeField(null=True, blank=True)
+    clue15Reached = models.DateTimeField(null=True, blank=True)
+    clue16Reached = models.DateTimeField(null=True, blank=True)
     #Model fields specific for Stem-ed
     descq1time = models.DateTimeField(null=True, blank=True)
     descq1 = models.TextField(null=True, blank=True)
@@ -92,6 +97,16 @@ class UserProgress(models.Model):
             self.clue10Reached = timezone.now()
         elif(self.clueReached == 11):
             self.clue11Reached = timezone.now()
+        elif(self.clueReached == 12):
+            self.clue11Reached = timezone.now()
+        elif(self.clueReached == 13):
+            self.clue11Reached = timezone.now()
+        elif(self.clueReached == 14):
+            self.clue11Reached = timezone.now()
+        elif(self.clueReached == 15):
+            self.clue11Reached = timezone.now()
+        elif(self.clueReached == 16):
+            self.clue11Reached = timezone.now()
         super(UserProgress, self).save()
 
 
@@ -114,3 +129,8 @@ class WonUser(models.Model):
     clue9Reached = models.DateTimeField(null='True')
     clue10Reached = models.DateTimeField(null='True')
     clue11Reached = models.DateTimeField(null='True')
+    clue12Reached = models.DateTimeField(null='True')
+    clue13Reached = models.DateTimeField(null='True')
+    clue14Reached = models.DateTimeField(null='True')
+    clue15Reached = models.DateTimeField(null='True')
+    clue16Reached = models.DateTimeField(null='True')
