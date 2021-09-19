@@ -7,7 +7,7 @@ import os
 # Create your views here.
 def leaderboard(request):
 
-    lead = UserProgress.objects.raw('''SELECT * FROM accounts_userprogress WHERE accounts_userprogress."user_id" NOT IN(1,2,3) ORDER BY  accounts_userprogress."clueReached" DESC,accounts_userprogress."lastClueReached" ASC''')[:10]
+    lead = UserProgress.objects.raw('''SELECT * FROM accounts_userprogress WHERE accounts_userprogress."user_id" NOT IN(1,2,3,4,5,6,7) ORDER BY  accounts_userprogress."clueReached" DESC,accounts_userprogress."lastClueReached" ASC''')[:10]
     
     now = datetime.datetime.now()
     check_date = datetime.datetime.strptime(os.environ.get("CHECK_DATE"),"%Y, %m, %d, %H, %M, %S")
