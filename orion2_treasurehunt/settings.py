@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get("SEC_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = ((os.environ.get('DEBUG_VALUE'))=='True')
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','orion2-treasurehunt.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 
 # Application definition
@@ -85,11 +85,8 @@ WSGI_APPLICATION = 'orion2_treasurehunt.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'orion2-treasurehunt',
-        'USER': os.environ.get("DBUSER"),
-        'PASSWORD': os.environ.get("DBPASS"),
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
